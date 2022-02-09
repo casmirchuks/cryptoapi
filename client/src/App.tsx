@@ -1,34 +1,29 @@
 import './App.css';
-import {ApolloClient, InMemoryCache, ApolloProvider, gql, useQuery} from '@apollo/client';
+import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+import Homepage from './Pages/Homepage';
 
-const GET_ALLCOINS = gql`
-  query{
-    allCoins {
-      name
-      symbol
-    }
-  }
-`;
 
+export type AllCoinType = {
+  id: number,
+  name: string,
+  symbol: string,
+  price_usd: string
+}
 
 const client = new ApolloClient ({
   uri: 'http://localhost:4000',
   cache: new InMemoryCache(),
 })
 
-const App: React.FC = () =>{
-  const {loading, error, data } = useQuery(GET_ALLCOINS, {variables: {id: "80"}})
-
-  if (loading) return `Loading...`
-  if (error) return `Error! ${error.message}`;
+function App () {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <span className='heading'> CryptoApi By CasnUzi</span>
-      </div>
+        <span className='heading'> CryptoApi By CasUzi</span>
+        <Homepage  />
+       </div>
     </ApolloProvider>
 
   );
 }
-
 export default App;
