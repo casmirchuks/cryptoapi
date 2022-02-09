@@ -15,7 +15,7 @@ const typeDefs = gql`
     market_cap_usd: String!,
     volume24: Float,
     volume24a: Float,
-    csupply: Float
+    csupply: Float,
     tsupply: Float,
     msupply: Float
   }
