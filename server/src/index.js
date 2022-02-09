@@ -7,9 +7,8 @@ const resolvers = {
         allCoins: async () => {
             const response = await axios.get('https://api.coinlore.net/api/tickers/')
             const allCoinList = [];
-            responseData = JSON.stringify(response);
-            console.log(responseData);
-            responseData.map((eachCoin) => allCoinList.push(eachCoin))
+            console.log(response);
+            response.data.data.map((eachCoin) => allCoinList.push(eachCoin))
             return allCoinList;
         }
     }
