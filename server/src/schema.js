@@ -17,7 +17,19 @@ const typeDefs = gql`
     volume24a: Float,
     csupply: Float,
     tsupply: Float,
-    msupply: Float
+    msupply: Float,
+    info: [Info!]!
+  }
+
+  type MarketData {
+    name: String!,
+    base: String!,
+    quote: String!,
+    price: Float,
+    price_usd: Float,
+    volume: Float,
+    volume_usd: Float,
+    time: Int
   }
 
   type Info {
@@ -26,7 +38,8 @@ const typeDefs = gql`
   }
 
   type Query {
-    allCoins: [AllCoin!]
+    allCoins: [AllCoin!],
+    marketData: [MarketData!]!
   }
   
 `;
