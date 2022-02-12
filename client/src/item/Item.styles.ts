@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Block = styled.div`
+padding: 1rem;
+
+`
+
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -8,6 +13,7 @@ export const Wrapper = styled.div`
   border: 1px solid lightblue;
   border-radius: 20px;
   height: 100%;
+  cursor: pointer;
   button {
     border-radius: 0 0 20px 20px;
   }
