@@ -39,7 +39,7 @@ const typeDefs = gql`
 
   type Query {
     allCoins: [AllCoin!],
-    marketData: [MarketData!]!
+    marketData(id:ID!): [MarketData]
   }
   
 `;
