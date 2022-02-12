@@ -1,9 +1,9 @@
 import './App.css';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
-import Homepage from './routes/AllCoin';
+import AllCoinsPage from './routes/AllCoin';
+import MarketDatePage from './routes/MarketData';
 import HideButton from './Components/Button'
 import { Center} from '@chakra-ui/react'
-
 
 
 export type AllCoinType = {
@@ -29,6 +29,9 @@ const client = new ApolloClient ({
 })
 
 function App () {
+
+  const coinId: any  = localStorage.getItem('coinID')
+  const cId = parseInt(coinId)
   return (
     <ApolloProvider client={client}>
       <div className="App">
@@ -38,8 +41,8 @@ function App () {
         <HideButton />
         </Center>
 
-        <Homepage  />
-
+        <AllCoinsPage  />
+        <MarketDatePage id={cId}/>
         
        </div>
     </ApolloProvider>

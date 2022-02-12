@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+export const Block = styled.div`
+padding: 1rem;
+
+`
+
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;

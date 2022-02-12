@@ -1,27 +1,27 @@
 // import { useState } from 'react';
 import { gql, useQuery } from '@apollo/client';
-import { marketDataType } from '../App';
+import { AllCoinType, marketDataType } from '../App';
 import Grid from '@material-ui/core/Grid'
 import MarketItem from '../Item/marketItem';
 
 const GET_MARKET_DATA = gql`
-query{
-    marketData {
-      name
-      base
-      quote
-      price
-      price_usd
-      volume
-      volume_usd
-      time
-    }
+query Query($marketDataId: ID!) {
+  marketData(id: $marketDataId) {
+    name
+    base
+    quote
   }
+}
+
 `
 
-export default function MarketDataPage(){
-    // const [name, setName] = useState("")
-    const {loading, error, data} = useQuery(GET_MARKET_DATA)
+type MarketDataProps = {
+  id: any 
+}
+
+const MarketDataPage: React.FC <MarketDataProps> = ({id})=>{
+    const toSID = JSON.stringify(id)
+    const {loading, error, data} = useQuery(GET_MARKET_DATA, {variables: toSID})
 
     if ( loading ) return <p>Loading...</p>
     if ( error ) return <p>Error :(</p>
@@ -36,3 +36,5 @@ export default function MarketDataPage(){
         </Grid>
         )
 }
+
+export default MarketDataPage
